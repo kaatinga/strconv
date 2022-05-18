@@ -1,13 +1,13 @@
 package strconv
 
-func DeleteLeadingZeros(numberAsString []byte) []byte {
-	for key, value := range numberAsString {
-		if value != 48 {
-			return numberAsString[key:]
+func DeleteLeadingZeros[I input](input I) I {
+	for key := 0; key < len(input); key++ {
+		if input[key] != 48 {
+			return input[key:]
 		}
-		if value == 48 && key+1 == len(numberAsString) {
-			return []byte{48}
+		if input[key] == 48 && key+1 == len(input) {
+			return input[key:]
 		}
 	}
-	return numberAsString
+	return input
 }

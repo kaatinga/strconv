@@ -6,7 +6,7 @@ import (
 )
 
 //nolint
-func BenchmarkString2Byte(b *testing.B) {
+func BenchmarkGetByte(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		GetByte("0")
@@ -16,7 +16,7 @@ func BenchmarkString2Byte(b *testing.B) {
 }
 
 // nolint
-func BenchmarkGeneric2Uint16(b *testing.B) {
+func BenchmarkGetUint16(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		//goland:noinspection GoUnhandledErrorResult
@@ -26,7 +26,7 @@ func BenchmarkGeneric2Uint16(b *testing.B) {
 }
 
 // nolint
-func BenchmarkString2Uint32(b *testing.B) {
+func BenchmarkGetUint32(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		GetUint32("0")

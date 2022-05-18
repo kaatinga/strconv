@@ -9,7 +9,9 @@
 The package contain several useful functions intended for conversion between string,
 []byte and different integer types.
 
-## String2Uint32(), Bytes2Uint32(), String2Byte(), etc
+For the sake of code code shortness, generics are used, it means the package requires to use go1.18+.
+
+## GetUint32(), GetUint16(),GetByte()
 
 The functions are faster alternative to `strconv.Atoi()`.
 
@@ -17,14 +19,14 @@ The functions are faster alternative to `strconv.Atoi()`.
 goos: darwin
 goarch: arm64
 pkg: github.com/kaatinga/strconv
-BenchmarkString2Byte
-BenchmarkString2Byte-8      	467720466	         2.542 ns/op	       0 B/op	       0 allocs/op
-BenchmarkGeneric2Uint16
-BenchmarkGeneric2Uint16-8   	476605455	         2.535 ns/op	       0 B/op	       0 allocs/op
-BenchmarkString2Uint32
-BenchmarkString2Uint32-8    	473442506	         2.533 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetByte
+BenchmarkGetByte-8         	420296895	         2.592 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetUint16
+BenchmarkGetUint16-8       	477782215	         2.521 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetUint32
+BenchmarkGetUint32-8       	473668162	         2.518 ns/op	       0 B/op	       0 allocs/op
 BenchmarkStrvconv_Atoi
-BenchmarkStrvconv_Atoi-8    	176394312	         6.808 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStrvconv_Atoi-8   	180559644	         6.732 ns/op	       0 B/op	       0 allocs/op
 PASS
 ```
 

@@ -1,13 +1,12 @@
 package strconv
 
+// DeleteLeadingZeros removes all the leading zeros in the input string.
 func DeleteLeadingZeros[I input](input I) I {
-	for key := 0; key < len(input); key++ {
+	key := 0
+	for ; key < len(input); key++ {
 		if input[key] != 48 {
 			return input[key:]
 		}
-		if input[key] == 48 && key+1 == len(input) {
-			return input[key:]
-		}
 	}
-	return input
+	return input[key-1:]
 }

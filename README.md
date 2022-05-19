@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/kaatinga/strconv.svg)](https://github.com/kaatinga/strconv/releases)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kaatinga/strconv/blob/main/LICENSE)
-[![codecov](https://codecov.io/gh/kaatinga/strconv/branch/master/graph/badge.svg)](https://codecov.io/gh/kaatinga/strconv)
+[![codecov](https://codecov.io/gh/kaatinga/strconv/branch/main/graph/badge.svg?token=TL88FINYP4)](https://codecov.io/gh/kaatinga/strconv)
 [![lint workflow](https://github.com/kaatinga/strconv/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/kaatinga/strconv/actions?query=workflow%3Alinter)
 [![help wanted](https://img.shields.io/badge/Help%20wanted-True-yellow.svg)](https://github.com/kaatinga/strconv/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 

@@ -101,6 +101,16 @@ func TestGetByteAndGetUint16(t *testing.T) {
 					t.Errorf("GetByte() gotUint16 = %v, want %v", gotByte, tt.want)
 				}
 			}
+			if string(tt.input) == "" || string(tt.input) == "abc" {
+				gotUint32, err := GetUint32(tt.input)
+				if (err != nil) != tt.wantErr {
+					t.Errorf("gotUint32 error = %v, wantErr %v", err, tt.wantErr)
+					return
+				}
+				if gotUint32 != uint32(tt.want) {
+					t.Errorf("gotUint32 gotUint16 = %v, want %v", gotUint32, tt.want)
+				}
+			}
 		})
 	}
 }

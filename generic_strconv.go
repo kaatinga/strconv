@@ -14,16 +14,15 @@ func GetByte[I input](input I) (byte, error) {
 	var i int
 	var output uint16
 	for {
-		if input[i] < 0x30 || input[i] > 0x39 {
+		if input[i]&^DigitsMask > 9 {
 			return 0, ErrNotByte
 		}
 
-		output = uint16(input[i])&UnicodeMask + output*10
-
+		output = uint16(input[i])&^DigitsMask + output*10
 		i++
 
 		if i == len(input) {
-			if output&^0xff != 0 {
+			if output&^MaxByteMask != 0 {
 				return 0, ErrNotByte
 			}
 			break
@@ -43,16 +42,15 @@ func GetUint16[I input](input I) (uint16, error) {
 	var output uint32
 	for {
 
-		if input[i] < 0x30 || input[i] > 0x39 {
+		if input[i]&^DigitsMask > 9 {
 			return 0, ErrNotUint16
 		}
 
-		output = output*10 + uint32(input[i])&UnicodeMask
-
+		output = output*10 + uint32(input[i])&^DigitsMask
 		i++
 
 		if i == len(input) {
-			if output&^0xffff != 0 {
+			if output&^MaxUint16Mask != 0 {
 				return 0, ErrNotUint16
 			}
 			break
@@ -73,16 +71,15 @@ func GetUint32[I input](input I) (uint32, error) {
 	var output uint64
 	for {
 
-		if input[i] < 0x30 || input[i] > 0x39 {
+		if input[i]&^DigitsMask > 9 {
 			return 0, ErrNotUint32
 		}
 
-		output = uint64(input[i])&UnicodeMask + output*10
-
+		output = uint64(input[i])&^DigitsMask + output*10
 		i++
 
 		if i == len(input) {
-			if output&^0xffffffff != 0 {
+			if output&^MaxUint32Mask != 0 {
 				return 0, ErrNotUint32
 			}
 			break

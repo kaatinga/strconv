@@ -1,6 +1,9 @@
 package strconv
 
 const (
-	UnicodeMask        = 0xf
+	MaxByteMask        = 0xff
+	MaxUint16Mask      = 0xffff
+	MaxUint32Mask      = 0xffffffff
+	DigitsMask         = 0b110000
 	ByteLengthMask int = 0b11 // it allows to catch cases faster when the number is too long.
 )

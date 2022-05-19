@@ -9,9 +9,9 @@
 The package contain several useful functions intended for conversion between string,
 []byte and different integer types.
 
-For the sake of code code shortness, generics are used, it means the package requires to use go1.18+.
+For the sake of code shortness, generics are used, it means the package requires to use go1.18+.
 
-## GetUint32(), GetUint16(),GetByte()
+## GetUint32(), GetUint16(), GetByte()
 
 The functions are faster alternative to `strconv.Atoi()`.
 

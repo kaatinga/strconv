@@ -4,8 +4,6 @@ linters-settings:
   depguard:
     list-type: blacklist
     include-go-root: true
-    packages-with-error-message:
-      errors: use github.com/pkg/errors
   dogsled:
     # checks assignments with too many blank identifiers; default is 2
     max-blank-identifiers: 2
@@ -80,7 +78,7 @@ linters-settings:
     settings:
       mnd:
         # the list of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks for description.
-        checks: argument,case,condition,operation,return,assign
+        checks: [ argument,case,condition,operation,return,assign ]
   govet:
     # report about shadowed variables
     check-shadowing: true

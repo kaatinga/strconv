@@ -20,13 +20,13 @@ goos: darwin
 goarch: arm64
 pkg: github.com/kaatinga/strconv
 BenchmarkGetByte
-BenchmarkGetByte-8         	420296895	         2.592 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetByte-8                             	523370584	         2.042 ns/op	       0 B/op	       0 allocs/op
 BenchmarkGetUint16
-BenchmarkGetUint16-8       	477782215	         2.521 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetUint16-8                           	582942614	         2.046 ns/op	       0 B/op	       0 allocs/op
 BenchmarkGetUint32
-BenchmarkGetUint32-8       	473668162	         2.518 ns/op	       0 B/op	       0 allocs/op
+BenchmarkGetUint32-8                           	587540109	         2.045 ns/op	       0 B/op	       0 allocs/op
 BenchmarkStrvconv_Atoi
-BenchmarkStrvconv_Atoi-8   	180559644	         6.732 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStrvconv_Atoi-8                       	174534008	         7.387 ns/op	       0 B/op	       0 allocs/op
 PASS
 ```
 

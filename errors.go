@@ -1,4 +1,4 @@
-package strconv
+package faststrconv
 
 // IntError - Error type based on int value.
 type IntError int

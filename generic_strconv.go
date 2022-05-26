@@ -1,4 +1,4 @@
-package strconv
+package faststrconv
 
 type input interface {
 	~[]byte | ~string

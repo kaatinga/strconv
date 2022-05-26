@@ -1,4 +1,4 @@
-package strconv
+package faststrconv
 
 const (
 	uint10    = 10

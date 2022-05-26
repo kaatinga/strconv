@@ -1,4 +1,4 @@
-package strconv
+package faststrconv
 
 // DeleteLeadingZeros removes all the leading zeros in the input string.
 func DeleteLeadingZeros[I input](input I) I {

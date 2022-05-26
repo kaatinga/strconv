@@ -1,4 +1,4 @@
-package strconv
+package faststrconv
 
 // Byte2String converts a byte number to string.
 func Byte2String(num byte) string {

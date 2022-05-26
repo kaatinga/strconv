@@ -4,7 +4,7 @@
 [![lint workflow](https://github.com/kaatinga/strconv/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/kaatinga/strconv/actions?query=workflow%3Alinter)
 [![help wanted](https://img.shields.io/badge/Help%20wanted-True-yellow.svg)](https://github.com/kaatinga/strconv/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 
-# The strconv package
+# The faststrconv package
 
 The package contain several useful functions intended for conversion between string,
 []byte and different integer types.

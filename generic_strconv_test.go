@@ -45,7 +45,7 @@ func TestGetUint32(t *testing.T) {
 		value, _ = strconv.Atoi(stringValue)
 
 		value3, err = GetUint32(stringValue)
-		if i < 4294967296 {
+		if i < MaxUint32 {
 			if err != nil {
 				t.Errorf("String2Uint32() error = %v, want %v", err, nil)
 			}

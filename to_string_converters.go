@@ -14,3 +14,13 @@ func Uint162String(num uint16) string {
 func Uint322String(num uint32) string {
 	return string(Uint322Bytes(num))
 }
+
+// Uint642String converts an uint64 number to string.
+func Uint642String(num uint64) string {
+	return string(Uint642Bytes(num))
+}
+
+// Uint32And642String converts an uint64 or uint32 number to string.
+func Uint32And642String[UI unsigned](num UI) string {
+	return string(Uint2Bytes(num))
+}

@@ -8,7 +8,7 @@ import (
 
 func Test2String(t *testing.T) {
 	var num uint64
-	for i := 0; i < 10000; i++ {
+	for i := 0; i < 70; i++ {
 		result := strconv.FormatUint(num, 10)
 		var got string
 		t.Run(result, func(t *testing.T) {
@@ -39,10 +39,6 @@ func Test2String(t *testing.T) {
 				}
 			}
 		})
-		if num > 65535 {
-			num = uint64(rand.Int31n(1535))
-		} else {
-			num = rand.Uint64()
-		}
+		num += uint64(rand.Int31n(10)) + num
 	}
 }

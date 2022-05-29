@@ -1,6 +1,9 @@
 package faststrconv
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+)
 
 ////nolint
 //func BenchmarkGetByte(b *testing.B) {
@@ -62,7 +65,6 @@ import "testing"
 //}
 
 func BenchmarkByte2String(b *testing.B) {
-
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		Byte2String(199)
@@ -77,5 +79,28 @@ func BenchmarkUint162String(b *testing.B) {
 		Uint162String(199)
 		Uint162String(0)
 		Uint162String(55)
+		Uint162String(64555)
+	}
+}
+
+func BenchmarkUint322String(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		Uint322String(199)
+		Uint322String(0)
+		Uint322String(55)
+		Uint322String(55)
+		Uint322String(64555)
+	}
+}
+
+func BenchmarkItoa(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		strconv.Itoa(199)
+		strconv.Itoa(0)
+		strconv.Itoa(55)
+		strconv.Itoa(55)
+		strconv.Itoa(64555)
 	}
 }

@@ -9,3 +9,8 @@ func Byte2String(num byte) string {
 func Uint162String(num uint16) string {
 	return string(Uint162Bytes(num))
 }
+
+// Uint322String converts an uint32 number to string.
+func Uint322String(num uint32) string {
+	return string(Uint322Bytes(num))
+}

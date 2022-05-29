@@ -7,11 +7,23 @@ const (
 	uint10000 = 10000
 )
 
+// Uint322Bytes converts an uint32 number to string.
+func Uint322Bytes(num uint32) []byte {
+	convertedNumber := make([]byte, 10)
+	i := 9
+	for {
+		convertedNumber[i] = byte(num%10) | 0x30
+		num = num / 10
+		if num == 0 {
+			return convertedNumber[i:]
+		}
+		i--
+	}
+}
+
 // Uint162Bytes converts an uint16 number to string.
 func Uint162Bytes(num uint16) []byte {
-
 	convertedNumber, i := getSliceUint16(num)
-
 	for {
 		convertedNumber[i] = byte(num%10) | 0x30
 		num = num / 10
@@ -45,7 +57,6 @@ func getSliceUint16(num uint16) ([]byte, int) {
 // Byte2Bytes converts a byte number to []byte.
 func Byte2Bytes(num byte) []byte {
 	convertedNumber, i := getSliceByte(num)
-
 	for {
 		convertedNumber[i] = num%10 | 0x30
 		num = num / 10

@@ -39,13 +39,19 @@ goos: darwin
 goarch: arm64
 pkg: github.com/kaatinga/strconv
 BenchmarkByte2String
-BenchmarkByte2String-8     	100000000	        10.52 ns/op	       0 B/op	       0 allocs/op
+BenchmarkByte2String-8                    	100000000	        10.54 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint162String
-BenchmarkUint162String-8   	71294893	        16.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint162String-8                  	71960958	        16.57 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint322String
-BenchmarkUint322String-8   	60141835	        20.36 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint322String-8                  	71680485	        16.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint642String
+BenchmarkUint642String-8                  	65918067	        17.98 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint32And642StringWithUint64
+BenchmarkUint32And642StringWithUint64-8   	58261146	        19.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint32And642StringWithUint32
+BenchmarkUint32And642StringWithUint32-8   	65289982	        18.19 ns/op	       0 B/op	       0 allocs/op
 BenchmarkItoa
-BenchmarkItoa-8            	32960958	        35.37 ns/op	       8 B/op	       2 allocs/op
+BenchmarkItoa-8                           	34061032	        35.20 ns/op	       8 B/op	       2 allocs/op
 PASS
 ```
 

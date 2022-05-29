@@ -89,8 +89,41 @@ func BenchmarkUint322String(b *testing.B) {
 		Uint322String(199)
 		Uint322String(0)
 		Uint322String(55)
-		Uint322String(55)
 		Uint322String(64555)
+	}
+}
+
+func BenchmarkUint642String(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		Uint642String(199)
+		Uint642String(0)
+		Uint642String(55)
+		Uint642String(64555)
+	}
+}
+
+func BenchmarkUint32And642StringWithUint64(b *testing.B) {
+	uint199 := uint64(199)
+	uint0 := uint64(0)
+	uint55 := uint64(55)
+	uint64555 := uint64(64555)
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		Uint32And642String(uint199)
+		Uint32And642String(uint0)
+		Uint32And642String(uint55)
+		Uint32And642String(uint64555)
+	}
+}
+
+func BenchmarkUint32And642StringWithUint32(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		Uint32And642String(uint32(199))
+		Uint32And642String(uint32(0))
+		Uint32And642String(uint32(55))
+		Uint32And642String(uint32(64555))
 	}
 }
 
@@ -99,7 +132,6 @@ func BenchmarkItoa(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		strconv.Itoa(199)
 		strconv.Itoa(0)
-		strconv.Itoa(55)
 		strconv.Itoa(55)
 		strconv.Itoa(64555)
 	}

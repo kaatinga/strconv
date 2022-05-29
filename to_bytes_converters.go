@@ -7,10 +7,49 @@ const (
 	uint10000 = 10000
 )
 
+// Uint642Bytes converts an uint64 number to string.
+func Uint642Bytes(num uint64) []byte {
+	convertedNumber := make([]byte, 20)
+	i := 19
+	for {
+		convertedNumber[i] = byte(num%10) | 0x30
+		num = num / 10
+		if num == 0 {
+			return convertedNumber[i:]
+		}
+		i--
+	}
+}
+
 // Uint322Bytes converts an uint32 number to string.
 func Uint322Bytes(num uint32) []byte {
 	convertedNumber := make([]byte, 10)
 	i := 9
+	for {
+		convertedNumber[i] = byte(num%10) | 0x30
+		num = num / 10
+		if num == 0 {
+			return convertedNumber[i:]
+		}
+		i--
+	}
+}
+
+type unsigned interface {
+	~uint | ~uint32 | ~uint64
+}
+
+// Uint2Bytes converts an uint, uint32 and uint64 number to string.
+func Uint2Bytes[UI unsigned](num UI) []byte {
+	var convertedNumber []byte
+	var i byte
+	if num > MaxUint32 {
+		convertedNumber = make([]byte, 20)
+		i = 19
+	} else {
+		convertedNumber = make([]byte, 10)
+		i = 9
+	}
 	for {
 		convertedNumber[i] = byte(num%10) | 0x30
 		num = num / 10

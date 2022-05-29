@@ -1,11 +1,11 @@
 package faststrconv
 
-type input interface {
+type stringOrBytes interface {
 	~[]byte | ~string
 }
 
 // GetByte validates and converts input string or []byte to byte type.
-func GetByte[I input](input I) (byte, error) {
+func GetByte[I stringOrBytes](input I) (byte, error) {
 
 	if len(input)&^ByteLengthMask != 0 || len(input) == 0 {
 		return 0, ErrNotByte
@@ -33,7 +33,7 @@ func GetByte[I input](input I) (byte, error) {
 }
 
 // GetUint16 validates and converts input string or []byte to uint16 type.
-func GetUint16[I input](input I) (uint16, error) {
+func GetUint16[I stringOrBytes](input I) (uint16, error) {
 	if len(input) == 0 {
 		return 0, ErrNotUint16
 	}
@@ -61,7 +61,7 @@ func GetUint16[I input](input I) (uint16, error) {
 }
 
 // GetUint32 validates and converts input string or []byte to uint32 type.
-func GetUint32[I input](input I) (uint32, error) {
+func GetUint32[I stringOrBytes](input I) (uint32, error) {
 
 	if len(input) == 0 {
 		return 0, ErrNotUint32

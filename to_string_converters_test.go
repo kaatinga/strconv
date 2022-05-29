@@ -7,32 +7,42 @@ import (
 )
 
 func Test2String(t *testing.T) {
-	var num int32
-	for i := 0; i < 5000; i++ {
-		result := strconv.Itoa(int(num))
-		var gotUint32, gotUint16, gotByte string
+	var num uint64
+	for i := 0; i < 10000; i++ {
+		result := strconv.FormatUint(num, 10)
+		var got string
 		t.Run(result, func(t *testing.T) {
-			gotUint32 = Uint322String(uint32(num))
-			if gotUint32 != result {
-				t.Errorf("Uint322String() = %v, want %v", gotUint32, result)
+			got = Uint642String(num)
+			if got != result {
+				t.Errorf("Uint642String() = %v, want %v", got, result)
 			}
-			if num < 65535 {
-				gotUint16 = Uint162String(uint16(num))
-				if gotUint16 != result {
-					t.Errorf("Uint162String() = %v, want %v", gotUint16, result)
+			got = Uint32And642String(num)
+			if got != result {
+				t.Errorf("Uint2Bytes() = %v, want %v", got, result)
+			}
+			if num < MaxUint32 {
+				got = Uint322String(uint32(num))
+				if got != result {
+					t.Errorf("Uint322String() = %v, want %v", got, result)
 				}
 			}
-			if num < 256 {
-				gotByte = Byte2String(byte(num))
-				if gotByte != result {
-					t.Errorf("Byte2String() = %v, want %v", gotByte, result)
+			if num < MaxUint16 {
+				got = Uint162String(uint16(num))
+				if got != result {
+					t.Errorf("Uint162String() = %v, want %v", got, result)
+				}
+			}
+			if num < MaxUint8 {
+				got = Byte2String(byte(num))
+				if got != result {
+					t.Errorf("Byte2String() = %v, want %v", got, result)
 				}
 			}
 		})
 		if num > 65535 {
-			num = rand.Int31n(1535)
+			num = uint64(rand.Int31n(1535))
 		} else {
-			num = rand.Int31()
+			num = rand.Uint64()
 		}
 	}
 }

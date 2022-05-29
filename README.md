@@ -35,11 +35,18 @@ PASS
 The functions are faster alternative to `strconv.Itoa()`.
 
 ```
-cpu: AMD Ryzen 5 3400G with Radeon Vega Graphics    
+goos: darwin
+goarch: arm64
+pkg: github.com/kaatinga/strconv
+BenchmarkByte2String
+BenchmarkByte2String-8     	100000000	        10.52 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint162String
-BenchmarkUint162String-8   	68361266	        17.65 ns/op	       0 B/op	       0 allocs/op
-BenchmarkStrvconvItoa
-BenchmarkStrvconvItoa-8    	30279402	        39.60 ns/op	       5 B/op	       1 allocs/op
+BenchmarkUint162String-8   	71294893	        16.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint322String
+BenchmarkUint322String-8   	60141835	        20.36 ns/op	       0 B/op	       0 allocs/op
+BenchmarkItoa
+BenchmarkItoa-8            	32960958	        35.37 ns/op	       8 B/op	       2 allocs/op
+PASS
 ```
 
 Warning. For the sake of maximum processing speed, all the converters have limited support of the leading zeros.

@@ -15,7 +15,7 @@ func Test2Byte(t *testing.T) {
 		value, _ = strconv.Atoi(stringValue)
 
 		value3, err = GetByte(stringValue)
-		if i < 256 {
+		if i < 256 { //nolint:nestif
 			if err != nil {
 				t.Errorf("String2Byte() error = %v, want %v", err, nil)
 			}
@@ -28,7 +28,7 @@ func Test2Byte(t *testing.T) {
 				t.Error("String2Byte() must have an error")
 			}
 
-			if 0 != value3 {
+			if value3 != 0 {
 				t.Errorf("String2Byte() value = %v, want %v, i %v", value3, 0, i)
 			}
 		}
@@ -45,7 +45,7 @@ func TestGetUint32(t *testing.T) {
 		value, _ = strconv.Atoi(stringValue)
 
 		value3, err = GetUint32(stringValue)
-		if i < MaxUint32 {
+		if i < maxUint32 { //nolint:nestif
 			if err != nil {
 				t.Errorf("String2Uint32() error = %v, want %v", err, nil)
 			}
@@ -58,7 +58,7 @@ func TestGetUint32(t *testing.T) {
 				t.Error("String2Uint32() must have an error")
 			}
 
-			if 0 != value3 {
+			if value3 != 0 {
 				t.Errorf("String2Uint32() value = %v, want 0, i = %v", value3, i)
 			}
 		}
@@ -81,34 +81,34 @@ func TestGetByteAndGetUint16(t *testing.T) {
 		{[]byte("abc"), 0, true},
 		{[]byte(""), 0, true},
 	}
-	for _, tt := range tests {
-		t.Run(string(tt.input), func(t *testing.T) {
-			gotUint16, err := GetUint16(tt.input)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("GetUint16() error = %v, wantErr %v", err, tt.wantErr)
+	for index := range tests {
+		t.Run(string(tests[index].input), func(t *testing.T) {
+			gotUint16, err := GetUint16(tests[index].input)
+			if (err != nil) != tests[index].wantErr {
+				t.Errorf("GetUint16() error = %v, wantErr %v", err, tests[index].wantErr)
 				return
 			}
-			if gotUint16 != tt.want {
-				t.Errorf("GetUint16() gotUint16 = %v, want %v", gotUint16, tt.want)
+			if gotUint16 != tests[index].want {
+				t.Errorf("GetUint16() gotUint16 = %v, want %v", gotUint16, tests[index].want)
 			}
-			if string(tt.input) != "16000" {
-				gotByte, err := GetByte(tt.input)
-				if (err != nil) != tt.wantErr {
-					t.Errorf("GetByte() error = %v, wantErr %v", err, tt.wantErr)
+			if string(tests[index].input) != "16000" {
+				gotByte, err := GetByte(tests[index].input)
+				if (err != nil) != tests[index].wantErr {
+					t.Errorf("GetByte() error = %v, wantErr %v", err, tests[index].wantErr)
 					return
 				}
-				if gotByte != byte(tt.want) {
-					t.Errorf("GetByte() gotUint16 = %v, want %v", gotByte, tt.want)
+				if gotByte != byte(tests[index].want) {
+					t.Errorf("GetByte() gotUint16 = %v, want %v", gotByte, tests[index].want)
 				}
 			}
-			if string(tt.input) == "" || string(tt.input) == "abc" {
-				gotUint32, err := GetUint32(tt.input)
-				if (err != nil) != tt.wantErr {
-					t.Errorf("gotUint32 error = %v, wantErr %v", err, tt.wantErr)
+			if string(tests[index].input) == "" || string(tests[index].input) == "abc" {
+				gotUint32, err := GetUint32(tests[index].input)
+				if (err != nil) != tests[index].wantErr {
+					t.Errorf("gotUint32 error = %v, wantErr %v", err, tests[index].wantErr)
 					return
 				}
-				if gotUint32 != uint32(tt.want) {
-					t.Errorf("gotUint32 gotUint16 = %v, want %v", gotUint32, tt.want)
+				if gotUint32 != uint32(tests[index].want) {
+					t.Errorf("gotUint32 gotUint16 = %v, want %v", gotUint32, tests[index].want)
 				}
 			}
 		})

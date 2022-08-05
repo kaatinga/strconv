@@ -19,8 +19,8 @@ func TestDeleteLeadingZeros(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(string(tt.numberAsString), func(t *testing.T) {
-			if got := DeleteLeadingZeros(tt.numberAsString); !reflect.DeepEqual(got, tt.want) { // nolint:scopelint
-				t.Errorf("DeleteLeadingZeros() = %v, want %v", got, tt.want) // nolint:scopelint
+			if got := DeleteLeadingZeros(tt.numberAsString); !reflect.DeepEqual(got, tt.want) { //nolint:scopelint
+				t.Errorf("DeleteLeadingZeros() = %v, want %v", got, tt.want) //nolint:scopelint
 			}
 		})
 	}

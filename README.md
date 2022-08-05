@@ -9,7 +9,7 @@
 The package contain several useful functions intended for conversion between string,
 []byte and different integer types.
 
-For the sake of code shortness, generics are used, it means the package requires to use go1.18+.
+For the sake of code shortness, generics are used, it means the package requires go1.18+.
 
 ## GetUint32(), GetUint16(), GetByte()
 
@@ -58,7 +58,7 @@ PASS
 Warning. For the sake of maximum processing speed, all the converters have limited support of the leading zeros.
 The length of the string cannot exceed the maximum length of the string of every certain type. For example, `012` is
 supported for the `byte` type, whereas `0255` is not as it consists of 4 characters what is impossible for `byte` type.
-In case you process a date number, like month that is formatted with zero, like `09`, you still can use the fast
+In case you process a date number, like month that is formatted with zero, like `09`, you can use the fast
 converters of the strconv package directly, but if you still need to process formatted numbers like `0000000000000255` as byte, use
 `DeleteLeadingZeros` helper to remove leading zeros in the processed string first:
 

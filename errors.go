@@ -1,14 +1,14 @@
 package faststrconv
 
-// IntError - Error type based on int value.
-type IntError int
+// intError - Error type based on int value.
+type intError int
 
 // Error returns error description.
-func (err IntError) Error() string {
+func (err intError) Error() string {
 	return errorDescriptions[err]
 }
 
-// errorDescriptions contains descriptions for the IntError errors.
+// errorDescriptions contains descriptions for the intError errors.
 var errorDescriptions = []string{
 	ErrNotUint32: "the input string is not an uint32 number",
 	ErrNotUint16: "the input string is not an uint16 number",
@@ -16,7 +16,7 @@ var errorDescriptions = []string{
 }
 
 const (
-	ErrNotUint32 IntError = iota
+	ErrNotUint32 intError = iota
 	ErrNotUint16
 	ErrNotByte
 )

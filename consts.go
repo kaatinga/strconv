@@ -1,13 +1,13 @@
 package faststrconv
 
 const (
-	MaxByteMask    = 0xff
-	MaxUint16Mask  = 0xffff
-	MaxUint32Mask  = 0xffffffff
-	DigitsMask     = 0b110000
-	ByteLengthMask = 0b11 // it allows to catch cases faster when the number is too long.
+	maxByteMask    = 0xff
+	maxUint16Mask  = 0xffff
+	maxUint32Mask  = 0xffffffff
+	digitsMask     = 0b110000
+	byteLengthMask = 0b11 // it allows to catch cases faster when the number is too long.
 
-	MaxUint8  = 1<<8 - 1
-	MaxUint16 = 1<<16 - 1
-	MaxUint32 = 1<<32 - 1
+	maxUint8  = 1<<8 - 1
+	maxUint16 = 1<<16 - 1
+	maxUint32 = 1<<32 - 1
 )

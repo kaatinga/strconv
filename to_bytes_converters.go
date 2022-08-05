@@ -43,7 +43,7 @@ type unsigned interface {
 func Uint2Bytes[UI unsigned](num UI) []byte {
 	var convertedNumber []byte
 	var i byte
-	if num > MaxUint32 {
+	if num > maxUint32 {
 		convertedNumber = make([]byte, 20)
 		i = 19
 	} else {

@@ -20,25 +20,26 @@ func Test2String(t *testing.T) {
 			if got != result {
 				t.Errorf("Uint2Bytes() = %v, want %v", got, result)
 			}
-			if num < MaxUint32 {
+			if num < maxUint32 {
 				got = Uint322String(uint32(num))
 				if got != result {
 					t.Errorf("Uint322String() = %v, want %v", got, result)
 				}
 			}
-			if num < MaxUint16 {
+			if num < maxUint16 {
 				got = Uint162String(uint16(num))
 				if got != result {
 					t.Errorf("Uint162String() = %v, want %v", got, result)
 				}
 			}
-			if num < MaxUint8 {
+			if num < maxUint8 {
 				got = Byte2String(byte(num))
 				if got != result {
 					t.Errorf("Byte2String() = %v, want %v", got, result)
 				}
 			}
 		})
+
 		num += uint64(rand.Int31n(10)) + num
 	}
 }

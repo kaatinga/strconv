@@ -39,7 +39,7 @@ func Test2String(t *testing.T) {
 				}
 			}
 		})
-
+		//nolint:gosec
 		num += uint64(rand.Int31n(10)) + num
 	}
 }

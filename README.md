@@ -1,3 +1,4 @@
+[![Tests](https://github.com/kaatinga/luna/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/kaatinga/luna/actions/workflows/test.yml)
 [![GitHub release](https://img.shields.io/github/release/kaatinga/strconv.svg)](https://github.com/kaatinga/strconv/releases)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kaatinga/strconv/blob/main/LICENSE)
 [![codecov](https://codecov.io/gh/kaatinga/strconv/branch/main/graph/badge.svg?token=TL88FINYP4)](https://codecov.io/gh/kaatinga/strconv)
@@ -67,4 +68,4 @@ numberINeed, err = strconv.String2Byte(DeleteLeadingZeros("0000000000000255"))
 if err != nil {
 	...
 }
-```[![Tests](https://github.com/kaatinga/luna/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/kaatinga/luna/actions/workflows/test.yml)
+```

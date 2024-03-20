@@ -67,4 +67,4 @@ numberINeed, err = strconv.String2Byte(DeleteLeadingZeros("0000000000000255"))
 if err != nil {
 	...
 }
-```
+```[![Tests](https://github.com/kaatinga/luna/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/kaatinga/luna/actions/workflows/test.yml)

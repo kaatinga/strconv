@@ -31,6 +31,33 @@ func GetByte[I stringOrBytes](input I) (byte, error) {
 	return byte(output), nil
 }
 
+// GetCustomByte validates and converts input string or []byte to byte type.
+func GetCustomByte[I stringOrBytes, V ~byte](input I) (V, error) {
+	if len(input)&^byteLengthMask != 0 || len(input) == 0 {
+		return 0, ErrNotByte
+	}
+
+	var i int
+	var output uint16
+	for {
+		if input[i]&^digitsMask > 9 {
+			return 0, ErrNotByte
+		}
+
+		output = uint16(input[i])&^digitsMask + output*10
+		i++
+
+		if i == len(input) {
+			if output&^maxByteMask != 0 {
+				return 0, ErrNotByte
+			}
+			break
+		}
+	}
+
+	return V(output), nil
+}
+
 // GetUint16 validates and converts input string or []byte to uint16 type.
 func GetUint16[I stringOrBytes](input I) (uint16, error) {
 	if len(input) == 0 {

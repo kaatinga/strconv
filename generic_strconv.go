@@ -21,7 +21,7 @@ func GetByte[I stringOrBytes](input I) (byte, error) {
 		i++
 
 		if i == len(input) {
-			if output&^maxByteMask != 0 {
+			if output > maxUint8 {
 				return 0, ErrNotByte
 			}
 			break
@@ -48,7 +48,7 @@ func GetCustomByte[I stringOrBytes, V ~byte](input I) (V, error) {
 		i++
 
 		if i == len(input) {
-			if output&^maxByteMask != 0 {
+			if output > maxUint8 {
 				return 0, ErrNotByte
 			}
 			break

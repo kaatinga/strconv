@@ -66,21 +66,39 @@ import (
 //	}
 // }
 
-func BenchmarkByte2String(b *testing.B) {
+// func BenchmarkByte2String(b *testing.B) {
+// 	b.ReportAllocs()
+// 	for i := 0; i < b.N; i++ {
+// 		_ = Byte2String(199)
+// 		_ = Byte2String(0)
+// 		_ = Byte2String(55)
+// 	}
+// }
+
+// func BenchmarkUint162String(b *testing.B) {
+// 	b.ReportAllocs()
+// 	for i := 0; i < b.N; i++ {
+// 		_ = Uint162String(199)
+// 		_ = Uint162String(0)
+// 		_ = Uint162String(55)
+// 	}
+// }
+
+func BenchmarkByte2Bytes(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		_ = Byte2String(199)
-		_ = Byte2String(0)
-		_ = Byte2String(55)
+		_ = Byte2Bytes(199)
+		_ = Byte2Bytes(0)
+		_ = Byte2Bytes(55)
 	}
 }
-
-func BenchmarkUint162String(b *testing.B) {
+func BenchmarkUint162Bytes(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		_ = Uint162String(199)
-		_ = Uint162String(0)
-		_ = Uint162String(55)
+		_ = Uint162Bytes(199)
+		_ = Uint162Bytes(0)
+		_ = Uint162Bytes(55)
+		_ = Uint162Bytes(64555)
 	}
 }
 

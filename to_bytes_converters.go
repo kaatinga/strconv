@@ -95,25 +95,22 @@ func getSliceUint16(num uint16) ([]byte, int) {
 
 // Byte2Bytes converts a byte number to []byte.
 func Byte2Bytes(num byte) []byte {
-	convertedNumber, i := getSliceByte(num)
-	for {
-		convertedNumber[i] = num%10 | 0x30
-		num = num / 10
-		if i == 0 {
-			return convertedNumber
-		}
-		i--
-	}
-}
+	const digit0 byte = '0'
 
-func getSliceByte(num byte) ([]byte, int) {
 	if num < uint10 {
-		return make([]byte, 1), 0
+		return []byte{num | digit0}
 	}
 
 	if num < uint100 {
-		return make([]byte, 2), 1
+		return []byte{
+			(num / 10) | digit0,
+			(num % 10) | digit0,
+		}
 	}
 
-	return make([]byte, 3), 2
+	return []byte{
+		(num / 100) | digit0,
+		((num / 10) % 10) | digit0,
+		(num % 10) | digit0,
+	}
 }

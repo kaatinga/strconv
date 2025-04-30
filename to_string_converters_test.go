@@ -16,18 +16,19 @@ func Test2String(t *testing.T) {
 			if got != result {
 				t.Errorf("Uint642String() = %v, want %v", got, result)
 			}
-			got = Uint2String(num)
-			if got != result {
-				t.Errorf("Uint2String() = %v, want %v", got, result)
-			}
 			got = Uint32And642String(num)
 			if got != result {
-				t.Errorf("Uint2Bytes() = %v, want %v", got, result)
+				t.Errorf("Uint32And642String() = %v, want %v", got, result)
 			}
 			if num < maxUint32 {
 				got = Uint322String(uint32(num))
 				if got != result {
 					t.Errorf("Uint322String() = %v, want %v", got, result)
+				}
+
+				got = Uint32And642String(uint32(num))
+				if got != result {
+					t.Errorf("Uint32And642String() = %v, want %v", got, result)
 				}
 			}
 			if num < maxUint16 {

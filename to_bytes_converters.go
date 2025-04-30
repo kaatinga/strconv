@@ -7,7 +7,7 @@ const (
 	uint10000 = 10000
 )
 
-// Uint642Bytes converts an uint64 number to string.
+// Uint642Bytes converts an uint64 number to []byte.
 func Uint642Bytes(num uint64) []byte {
 	convertedNumber := make([]byte, 20)
 	i := 19
@@ -21,7 +21,7 @@ func Uint642Bytes(num uint64) []byte {
 	}
 }
 
-// Uint322Bytes converts an uint32 number to string.
+// Uint322Bytes converts an uint32 number to []byte.
 func Uint322Bytes(num uint32) []byte {
 	convertedNumber := make([]byte, 10)
 	i := 9
@@ -39,7 +39,7 @@ type unsigned interface {
 	~uint | ~uint32 | ~uint64
 }
 
-// Uint2Bytes converts an uint, uint32 and uint64 number to string.
+// Uint2Bytes converts an uint, uint32 and uint64 number to []byte.
 func Uint2Bytes[UI unsigned](num UI) []byte {
 	var convertedNumber []byte
 	var i byte
@@ -60,7 +60,7 @@ func Uint2Bytes[UI unsigned](num UI) []byte {
 	}
 }
 
-// Uint162Bytes converts an uint16 number to string.
+// Uint162Bytes converts an uint16 number to []byte.
 func Uint162Bytes(num uint16) []byte {
 	convertedNumber, i := getSliceUint16(num)
 	for {

@@ -93,6 +93,7 @@ func GetUint32[I stringOrBytes](input I) (uint32, error) {
 
 	var i int
 	var output uint64
+
 	for {
 		if input[i]&^digitsMask > 9 {
 			return 0, ErrNotUint32
@@ -102,7 +103,7 @@ func GetUint32[I stringOrBytes](input I) (uint32, error) {
 		i++
 
 		if i == len(input) {
-			if output&^maxUint32Mask != 0 {
+			if output > maxUint32 {
 				return 0, ErrNotUint32
 			}
 			break

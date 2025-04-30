@@ -39,20 +39,21 @@ The functions are faster alternative to `strconv.Itoa()`.
 goos: darwin
 goarch: arm64
 pkg: github.com/kaatinga/strconv
+cpu: Apple M1
 BenchmarkByte2String
-BenchmarkByte2String-8                    	100000000	        10.54 ns/op	       0 B/op	       0 allocs/op
+BenchmarkByte2String-8                    	70187169	        19.01 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint162String
-BenchmarkUint162String-8                  	71960958	        16.57 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint162String-8                  	44651092	        27.47 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint322String
-BenchmarkUint322String-8                  	71680485	        16.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint322String-8                  	42029007	        29.80 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint642String
-BenchmarkUint642String-8                  	65918067	        17.98 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint642String-8                  	38611280	        31.20 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint32And642StringWithUint64
-BenchmarkUint32And642StringWithUint64-8   	58261146	        19.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint32And642StringWithUint64-8   	38078565	        31.53 ns/op	       0 B/op	       0 allocs/op
 BenchmarkUint32And642StringWithUint32
-BenchmarkUint32And642StringWithUint32-8   	65289982	        18.19 ns/op	       0 B/op	       0 allocs/op
+BenchmarkUint32And642StringWithUint32-8   	37886760	        31.42 ns/op	       0 B/op	       0 allocs/op
 BenchmarkItoa
-BenchmarkItoa-8                           	34061032	        35.20 ns/op	       8 B/op	       2 allocs/op
+BenchmarkItoa-8                           	20134200	        58.28 ns/op	       8 B/op	       2 allocs/op
 PASS
 ```
 

@@ -20,11 +20,6 @@ func Uint642String(num uint64) string {
 	return string(Uint642Bytes(num))
 }
 
-// Uint2String converts an uint, uint32 or uint64 to string.
-func Uint2String(num uint64) string {
-	return string(Uint2Bytes(num))
-}
-
 // Uint32And642String converts an uint64 or uint32 to string.
 func Uint32And642String[UI unsigned](num UI) string {
 	return string(Uint2Bytes(num))

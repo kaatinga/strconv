@@ -16,6 +16,10 @@ func Test2String(t *testing.T) {
 			if got != result {
 				t.Errorf("Uint642String() = %v, want %v", got, result)
 			}
+			got = Uint2String(num)
+			if got != result {
+				t.Errorf("Uint2String() = %v, want %v", got, result)
+			}
 			got = Uint32And642String(num)
 			if got != result {
 				t.Errorf("Uint2Bytes() = %v, want %v", got, result)

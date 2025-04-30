@@ -75,7 +75,7 @@ func GetUint16[I stringOrBytes](input I) (uint16, error) {
 		i++
 
 		if i == len(input) {
-			if output&^maxUint16Mask != 0 {
+			if output > maxUint16 {
 				return 0, ErrNotUint16
 			}
 			break

@@ -2,8 +2,6 @@ name: Go Linter
 
 on:
   push:
-    branches-ignore:
-      - none
     tags-ignore:
       - '*'
     paths:

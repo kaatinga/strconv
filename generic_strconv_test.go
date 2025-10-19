@@ -14,24 +14,47 @@ func Test2Byte(t *testing.T) {
 		stringValue = strconv.Itoa(i)
 		value, _ = strconv.Atoi(stringValue)
 
-		value3, err = GetByte(stringValue)
-		if i < 256 { //nolint:nestif
-			if err != nil {
-				t.Errorf("String2Byte() error = %v, want %v", err, nil)
-			}
+		t.Run("GetByte + "+stringValue, func(t *testing.T) {
+			value3, err = GetByte(stringValue)
+			if i < 256 { //nolint:nestif
+				if err != nil {
+					t.Errorf("String2Byte() error = %v, want %v", err, nil)
+				}
 
-			if byte(value) != value3 {
-				t.Errorf("String2Byte() value = %v, want %v", value3, value)
-			}
-		} else {
-			if err == nil {
-				t.Error("String2Byte() must have an error")
-			}
+				if byte(value) != value3 {
+					t.Errorf("String2Byte() value = %v, want %v", value3, value)
+				}
+			} else {
+				if err == nil {
+					t.Error("String2Byte() must have an error")
+				}
 
-			if value3 != 0 {
-				t.Errorf("String2Byte() value = %v, want %v, i %v", value3, 0, i)
+				if value3 != 0 {
+					t.Errorf("String2Byte() value = %v, want %v, i %v", value3, 0, i)
+				}
 			}
-		}
+		})
+
+		t.Run("GetCustomByte + "+stringValue, func(t *testing.T) {
+			value3, err = GetCustomByte[string, byte](stringValue)
+			if i < 256 { //nolint:nestif
+				if err != nil {
+					t.Errorf("String2Byte() error = %v, want %v", err, nil)
+				}
+
+				if byte(value) != value3 {
+					t.Errorf("String2Byte() value = %v, want %v", value3, value)
+				}
+			} else {
+				if err == nil {
+					t.Error("String2Byte() must have an error")
+				}
+
+				if value3 != 0 {
+					t.Errorf("String2Byte() value = %v, want %v, i %v", value3, 0, i)
+				}
+			}
+		})
 	}
 }
 

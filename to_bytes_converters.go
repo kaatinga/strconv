@@ -9,13 +9,13 @@ const (
 
 // Uint642Bytes converts an uint64 number to []byte.
 func Uint642Bytes(num uint64) []byte {
-	convertedNumber := make([]byte, 20)
-	i := 19
+	convertedNumber := make([]byte, decDigits64(num))
+	i := len(convertedNumber) - 1
 	for {
 		convertedNumber[i] = byte(num%10) | 0x30
 		num = num / 10
 		if num == 0 {
-			return convertedNumber[i:]
+			return convertedNumber
 		}
 		i--
 	}
@@ -23,13 +23,13 @@ func Uint642Bytes(num uint64) []byte {
 
 // Uint322Bytes converts an uint32 number to []byte.
 func Uint322Bytes(num uint32) []byte {
-	convertedNumber := make([]byte, 10)
-	i := 9
+	convertedNumber := make([]byte, decDigits32(num))
+	i := len(convertedNumber) - 1
 	for {
 		convertedNumber[i] = byte(num%10) | 0x30
 		num = num / 10
 		if num == 0 {
-			return convertedNumber[i:]
+			return convertedNumber
 		}
 		i--
 	}
@@ -41,22 +41,85 @@ type unsigned interface {
 
 // Uint2Bytes converts an uint, uint32 and uint64 number to []byte.
 func Uint2Bytes[UI unsigned](num UI) []byte {
-	var convertedNumber []byte
-	var i byte
-	if num > maxUint32 {
-		convertedNumber = make([]byte, 20)
-		i = 19
-	} else {
-		convertedNumber = make([]byte, 10)
-		i = 9
-	}
+	convertedNumber := make([]byte, decDigits64(uint64(num)))
+	i := len(convertedNumber) - 1
 	for {
 		convertedNumber[i] = byte(num%10) | 0x30
 		num = num / 10
 		if num == 0 {
-			return convertedNumber[i:]
+			return convertedNumber
 		}
 		i--
+	}
+}
+
+func decDigits32(num uint32) int {
+	switch {
+	case num < 10:
+		return 1
+	case num < 100:
+		return 2
+	case num < 1000:
+		return 3
+	case num < 10000:
+		return 4
+	case num < 100000:
+		return 5
+	case num < 1000000:
+		return 6
+	case num < 10000000:
+		return 7
+	case num < 100000000:
+		return 8
+	case num < 1000000000:
+		return 9
+	default:
+		return 10
+	}
+}
+
+func decDigits64(num uint64) int {
+	switch {
+	case num < 10:
+		return 1
+	case num < 100:
+		return 2
+	case num < 1000:
+		return 3
+	case num < 10000:
+		return 4
+	case num < 100000:
+		return 5
+	case num < 1000000:
+		return 6
+	case num < 10000000:
+		return 7
+	case num < 100000000:
+		return 8
+	case num < 1000000000:
+		return 9
+	case num < 10000000000:
+		return 10
+	case num < 100000000000:
+		return 11
+	case num < 1000000000000:
+		return 12
+	case num < 10000000000000:
+		return 13
+	case num < 100000000000000:
+		return 14
+	case num < 1000000000000000:
+		return 15
+	case num < 10000000000000000:
+		return 16
+	case num < 100000000000000000:
+		return 17
+	case num < 1000000000000000000:
+		return 18
+	case num < 10000000000000000000:
+		return 19
+	default:
+		return 20
 	}
 }
 

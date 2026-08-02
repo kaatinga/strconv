@@ -5,6 +5,9 @@ type intError int
 
 // Error returns error description.
 func (err intError) Error() string {
+	if err < 0 || int(err) >= len(errorDescriptions) {
+		return "unknown integer conversion error"
+	}
 	return errorDescriptions[err]
 }
 

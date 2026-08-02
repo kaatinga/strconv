@@ -1,7 +1,6 @@
 package faststrconv
 
 const (
-	digitsMask     = 0b110000
 	byteLengthMask = 0b11 // it allows to catch cases faster when the number is too long.
 
 	maxUint8  = 1<<8 - 1

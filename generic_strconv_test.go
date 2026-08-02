@@ -60,21 +60,19 @@ func Test2Byte(t *testing.T) {
 
 func TestGetUint32(t *testing.T) {
 	var stringValue string
-	var value int
 	var value3 uint32
 	var err error
 	for i := uint64(0); i < 10000000000; i = i + 10001 {
 		stringValue = strconv.FormatUint(i, 10)
-		value, _ = strconv.Atoi(stringValue)
 
 		value3, err = GetUint32(stringValue)
-		if i < maxUint32 { //nolint:nestif
+		if i <= maxUint32 { //nolint:nestif
 			if err != nil {
 				t.Errorf("String2Uint32() error = %v, want %v", err, nil)
 			}
 
-			if uint32(value) != value3 {
-				t.Errorf("String2Uint32() value = %v, want %v", value3, value)
+			if uint32(i) != value3 {
+				t.Errorf("String2Uint32() value = %v, want %v", value3, i)
 			}
 		} else {
 			if err == nil {
@@ -136,4 +134,76 @@ func TestGetByteAndGetUint16(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestParsersRejectInvalidDigits(t *testing.T) {
+	inputs := []string{"1 "}
+	for value := 0; value <= 255; value++ {
+		if value < '0' || value > '9' {
+			inputs = append(inputs, string([]byte{byte(value)}))
+		}
+	}
+
+	for _, input := range inputs {
+		t.Run(strconv.Quote(input), func(t *testing.T) {
+			if _, err := GetByte(input); err != ErrNotByte {
+				t.Errorf("GetByte() error = %v, want %v", err, ErrNotByte)
+			}
+			if _, err := GetCustomByte[string, byte](input); err != ErrNotByte {
+				t.Errorf("GetCustomByte() error = %v, want %v", err, ErrNotByte)
+			}
+			if _, err := GetUint16(input); err != ErrNotUint16 {
+				t.Errorf("GetUint16() error = %v, want %v", err, ErrNotUint16)
+			}
+			if _, err := GetUint32(input); err != ErrNotUint32 {
+				t.Errorf("GetUint32() error = %v, want %v", err, ErrNotUint32)
+			}
+		})
+	}
+}
+
+func TestUintParsersBounds(t *testing.T) {
+	t.Run("uint16", func(t *testing.T) {
+		tests := []struct {
+			input   string
+			want    uint16
+			wantErr error
+		}{
+			{"65535", maxUint16, nil},
+			{"65536", 0, ErrNotUint16},
+			{"000001", 0, ErrNotUint16},
+			{"4294967296", 0, ErrNotUint16},
+		}
+		for _, tt := range tests {
+			got, err := GetUint16(tt.input)
+			if err != tt.wantErr {
+				t.Errorf("GetUint16(%q) error = %v, want %v", tt.input, err, tt.wantErr)
+			}
+			if got != tt.want {
+				t.Errorf("GetUint16(%q) = %v, want %v", tt.input, got, tt.want)
+			}
+		}
+	})
+
+	t.Run("uint32", func(t *testing.T) {
+		tests := []struct {
+			input   string
+			want    uint32
+			wantErr error
+		}{
+			{"4294967295", maxUint32, nil},
+			{"4294967296", 0, ErrNotUint32},
+			{"00000000001", 0, ErrNotUint32},
+			{"18446744073709551616", 0, ErrNotUint32},
+		}
+		for _, tt := range tests {
+			got, err := GetUint32(tt.input)
+			if err != tt.wantErr {
+				t.Errorf("GetUint32(%q) error = %v, want %v", tt.input, err, tt.wantErr)
+			}
+			if got != tt.want {
+				t.Errorf("GetUint32(%q) = %v, want %v", tt.input, got, tt.want)
+			}
+		}
+	})
 }

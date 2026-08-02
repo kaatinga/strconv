@@ -13,11 +13,12 @@ func GetByte[I stringOrBytes](input I) (byte, error) {
 	var i int
 	var output uint16
 	for {
-		if input[i]&^digitsMask > 9 {
+		digit := input[i] - '0'
+		if digit > 9 {
 			return 0, ErrNotByte
 		}
 
-		output = uint16(input[i])&^digitsMask + output*10
+		output = uint16(digit) + output*10
 		i++
 
 		if i == len(input) {
@@ -40,11 +41,12 @@ func GetCustomByte[I stringOrBytes, V ~byte](input I) (V, error) {
 	var i int
 	var output uint16
 	for {
-		if input[i]&^digitsMask > 9 {
+		digit := input[i] - '0'
+		if digit > 9 {
 			return 0, ErrNotByte
 		}
 
-		output = uint16(input[i])&^digitsMask + output*10
+		output = uint16(digit) + output*10
 		i++
 
 		if i == len(input) {
@@ -60,18 +62,19 @@ func GetCustomByte[I stringOrBytes, V ~byte](input I) (V, error) {
 
 // GetUint16 validates and converts input string or []byte to uint16 type.
 func GetUint16[I stringOrBytes](input I) (uint16, error) {
-	if len(input) == 0 {
+	if len(input) == 0 || len(input) > 5 {
 		return 0, ErrNotUint16
 	}
 
 	var i int
 	var output uint32
 	for {
-		if input[i]&^digitsMask > 9 {
+		digit := input[i] - '0'
+		if digit > 9 {
 			return 0, ErrNotUint16
 		}
 
-		output = output*10 + uint32(input[i])&^digitsMask
+		output = output*10 + uint32(digit)
 		i++
 
 		if i == len(input) {
@@ -87,7 +90,7 @@ func GetUint16[I stringOrBytes](input I) (uint16, error) {
 
 // GetUint32 validates and converts input string or []byte to uint32 type.
 func GetUint32[I stringOrBytes](input I) (uint32, error) {
-	if len(input) == 0 {
+	if len(input) == 0 || len(input) > 10 {
 		return 0, ErrNotUint32
 	}
 
@@ -95,11 +98,12 @@ func GetUint32[I stringOrBytes](input I) (uint32, error) {
 	var output uint64
 
 	for {
-		if input[i]&^digitsMask > 9 {
+		digit := input[i] - '0'
+		if digit > 9 {
 			return 0, ErrNotUint32
 		}
 
-		output = uint64(input[i])&^digitsMask + output*10
+		output = uint64(digit) + output*10
 		i++
 
 		if i == len(input) {
